@@ -12,7 +12,7 @@ import java.util.UUID;
 @Setter
 @FieldNameConstants
 @AllArgsConstructor
-public class PropertyDto {
+public class UserDto {
 
     @NotNull
     private UUID propertyUuid;

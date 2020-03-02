@@ -1,6 +1,6 @@
 package com.duboiscave.passion.rpg.factory;
 
-import com.duboiscave.passion.rpg.domain.Property;
+import com.duboiscave.passion.rpg.domain.User;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.apache.commons.lang3.RandomUtils.nextBoolean;
@@ -13,12 +13,10 @@ public class PropertyDataFactory {
 
     public static class PropertyObject {
 
-        public static Property.PropertyBuilder complete(){
-            return  Property.builder()
-                    .propertyCode(randomAlphabetic(ALPHABETIC_CODE_COUNT))
-                    .address(randomAlphabetic(ALPHABETIC_COUNT))
-                    .numberOfApartments(nextInt(1, Integer.MAX_VALUE))
-                    .leased(nextBoolean());
+        public static User.UserBuilder complete(){
+            return  User.builder()
+                    .name(randomAlphabetic(ALPHABETIC_COUNT))
+                    .email(randomAlphabetic(ALPHABETIC_CODE_COUNT));
         }
     }
 }

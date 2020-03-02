@@ -17,19 +17,11 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldNameConstants
-public class PropertyCreateForm {
+public class UserCreateForm {
 
     @NotBlank
-    @Length(min = 1, max = 10)
-    private String propertyCode;
+    private String name;
 
     @NotNull
-    private Boolean leased;
-
-    @NotNull
-    @Length(min = 1, max = 255)
-    private String address; //todo wyniesc do osobnego obiektu
-
-    @NotNull
-    private Integer numberOfApartments;
+    private String email;
 }

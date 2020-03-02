@@ -13,10 +13,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 
 @Entity
-@Table(name = "properties", indexes = {
-        @Index(name = "idx_properties_code", columnList = "property_code")
+@Table(name = "users", indexes = {
+        @Index(name = "idx_users_email", columnList = "email")
 })
 @Getter
 @Setter
@@ -25,19 +26,12 @@ import javax.persistence.Table;
 @FieldNameConstants
 @AllArgsConstructor
 @Builder
-public class Property extends AbstractUUIDEntity {
+public class User extends AbstractUUIDEntity {
 
-    @Column(name = "property_code", nullable = false, unique = true)
-    @Length(min = 1, max = 10)
-    private String propertyCode;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @Column(name = "leased", nullable = false)
-    private Boolean leased;
-
-    @Column(name = "address", nullable = false, unique = true)
-    @Length(min = 1, max = 255)
-    private String address;
-
-    @Column(name = "number_of_apartments", nullable = false)
-    private Integer numberOfApartments;
+    @Email
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 }

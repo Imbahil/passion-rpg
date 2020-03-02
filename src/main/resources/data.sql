@@ -1,19 +1,16 @@
-DROP TABLE IF EXISTS properties CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 DROP SEQUENCE hibernate_sequence;
 
 CREATE SEQUENCE hibernate_sequence;
 
-CREATE TABLE properties
+CREATE TABLE users
 (
     id BIGINT PRIMARY KEY,
     uuid UUID UNIQUE NOT NULL,
-    property_code VARCHAR(10) NOT NULL UNIQUE,
-    leased BOOLEAN NOT NULL,
-    address VARCHAR(255) NOT NULL UNIQUE,
-    number_of_apartments BIGINT NOT NULL
+    name VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE
 );
 
 
-CREATE INDEX idx_properties_code
-    ON properties (property_code);
-
+CREATE INDEX idx_users_email
+    ON users (email);
