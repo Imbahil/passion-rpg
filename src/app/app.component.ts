@@ -7,9 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  title: string;
 
   constructor() {
-    this.title = 'Spring Boot - Angular Application';
+  }
+
+  getTitle(): string {
+    return 'Paper RPG Users Pane';
   }
 }
