@@ -4,7 +4,6 @@ import com.duboiscave.passion.rpg.core.JunitTags;
 import com.duboiscave.passion.rpg.domain.Repository.UserRepository;
 import com.duboiscave.passion.rpg.domain.User;
 import com.duboiscave.passion.rpg.dto.UserDto;
-import com.duboiscave.passion.rpg.exception.FoundException;
 import com.duboiscave.passion.rpg.factory.PropertyDataFactory;
 import com.duboiscave.passion.rpg.form.UserCreateForm;
 import info.solidsoft.mockito.java8.api.WithBDDMockito;

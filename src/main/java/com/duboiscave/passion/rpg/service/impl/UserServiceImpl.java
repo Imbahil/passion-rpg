@@ -1,9 +1,9 @@
 package com.duboiscave.passion.rpg.service.impl;
 
-import com.duboiscave.passion.rpg.domain.User;
 import com.duboiscave.passion.rpg.domain.Repository.UserRepository;
+import com.duboiscave.passion.rpg.domain.User;
 import com.duboiscave.passion.rpg.dto.UserDto;
-import com.duboiscave.passion.rpg.exception.FoundException;
+import com.duboiscave.passion.rpg.exception.NonUniqueException;
 import com.duboiscave.passion.rpg.form.UserCreateForm;
 import com.duboiscave.passion.rpg.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
 
     interface ErrorMessages {
 
-        String PROPERTY_PATTERN = "Property with code: %s, already exists";
+        String PROPERTY_PATTERN = "User with email: %s, already exists";
 
     }
 
@@ -30,10 +30,10 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserDto createUser(final UserCreateForm userCreateForm) throws FoundException {
+    public UserDto createUser(final UserCreateForm userCreateForm) throws RuntimeException {
 
-        if (userRepository.findByEmail(userCreateForm.getEmail()).isPresent()){
-            throw new FoundException(PROPERTY_PATTERN, userCreateForm.getEmail());
+        if (userRepository.findByEmail(userCreateForm.getEmail()).isPresent()) {
+            throw new NonUniqueException(PROPERTY_PATTERN, userCreateForm.getEmail());
         }
 
         final User user = User.builder()
